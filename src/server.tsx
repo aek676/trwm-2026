@@ -36,7 +36,8 @@ const app = new Elysia()
 		);
 	})
 	.listen(3000);
-
-console.log(
-	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
-);
+if (process.env.NODE_ENV !== "production") {
+	console.log(
+		`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
+	);
+}
