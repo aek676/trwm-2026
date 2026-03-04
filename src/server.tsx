@@ -3,7 +3,7 @@ import { staticPlugin } from "@elysiajs/static";
 import { Elysia } from "elysia";
 import { Logestic } from "logestic";
 import routes from "./routes/index";
-import { ErrorView } from "./views/ErrorView";
+import { ErrorView } from "./views";
 
 const app = new Elysia()
 	.use(html())

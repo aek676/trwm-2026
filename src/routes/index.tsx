@@ -1,8 +1,6 @@
 import { Elysia } from "elysia";
-import locationCtrl from "../controllers/location";
-import othersCtrl from "../controllers/others";
-import usersCtrl from "../controllers/users";
-import { HomeView } from "../views/HomeView";
+import { locationCtrl, othersCtrl, usersCtrl } from "../controllers";
+import { HomeView } from "../views";
 
 export default new Elysia()
 	.get("/", () => {
