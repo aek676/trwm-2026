@@ -6,11 +6,12 @@
 		"build": "NODE_ENV=production bun build --compile --minify-whitespace --minify-syntax --target bun --outfile dist/server src/index.ts",
 		"start": "./dist/server",
 		"dev": "bun run --watch src/server.tsx",
-    "check": "bun tsc --noEmit",
+		"check": "bun tsc --noEmit",
 		"lint": "biome check"
 	},
 	"dependencies": {
 		"@elysiajs/html": "^1.4.0",
+		"@elysiajs/openapi": "^1.4.14",
 		"@elysiajs/static": "^1.4.7",
 		"elysia": "latest",
 		"logestic": "^1.2.4"

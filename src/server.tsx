@@ -1,4 +1,5 @@
 import { html } from "@elysiajs/html";
+import openapi from "@elysiajs/openapi";
 import { staticPlugin } from "@elysiajs/static";
 import { Elysia } from "elysia";
 import { Logestic } from "logestic";
@@ -36,6 +37,11 @@ const app = new Elysia()
 		);
 	})
 	.listen(3000);
+
+if (process.env.NODE_ENV !== "production") {
+	app.use(openapi());
+}
+
 if (process.env.NODE_ENV !== "production") {
 	console.log(
 		`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
