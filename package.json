@@ -3,14 +3,16 @@
 	"version": "1.0.50",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "bun run src/index.ts",
-		"dev": "bun run --watch src/index.ts",
+    "build": "bun build --compile --minify-whitespace --minify-syntax --target bun --outfile dist/server src/index.tsx",
+		"start": "bun run src/index.tsx",
+		"dev": "bun run --watch src/index.tsx",
 		"check": "biome check"
 	},
 	"dependencies": {
 		"@elysiajs/html": "^1.4.0",
 		"@elysiajs/static": "^1.4.7",
-		"elysia": "latest"
+		"elysia": "latest",
+		"logestic": "^1.2.4"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.5",
