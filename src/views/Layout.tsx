@@ -29,7 +29,7 @@ export function Layout({ title, children }: LayoutProps) {
 			<body>
 				<header>
 					<nav
-						class="navbar fixed-top navbar-expand-lg bg-primary"
+						class="navbar fixed-top navbar-expand-md bg-primary"
 						data-bs-theme="dark"
 					>
 						<a class="navbar-brand" href="/">
