@@ -11,10 +11,8 @@ export function Layout({ title, children }: LayoutProps) {
 				<title>{title || "TRWM"}</title>
 
 				<link
-					href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 					rel="stylesheet"
-					integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-					crossorigin="anonymous"
+					href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
 				/>
 
 				<link
@@ -32,28 +30,30 @@ export function Layout({ title, children }: LayoutProps) {
 						class="navbar fixed-top navbar-expand-md bg-primary"
 						data-bs-theme="dark"
 					>
-						<a class="navbar-brand" href="/">
-							Loc8r
-						</a>
-						<button
-							class="navbar-toggler"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#navbarMain"
-							aria-controls="navbarMain"
-							aria-expanded="false"
-							aria-label="Toggle navigation"
-						>
-							<span class="navbar-toggler-icon" />
-						</button>
-						<div class="collapse navbar-collapse" id="navbarMain">
-							<ul class="navbar-nav">
-								<li class="nav-item">
-									<a class="nav-link" href="/about">
-										About
-									</a>
-								</li>
-							</ul>
+						<div class="container-fluid">
+							<a class="navbar-brand" href="/">
+								Loc8r
+							</a>
+							<button
+								class="navbar-toggler"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarMain"
+								aria-controls="navbarMain"
+								aria-expanded="false"
+								aria-label="Toggle navigation"
+							>
+								<span class="navbar-toggler-icon" />
+							</button>
+							<div class="collapse navbar-collapse" id="navbarMain">
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<a class="nav-link" href="/about">
+											About
+										</a>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</nav>
 				</header>
