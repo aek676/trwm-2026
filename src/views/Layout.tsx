@@ -1,7 +1,9 @@
-interface LayoutProps {
+import type { Children } from "@kitajs/html";
+
+export type LayoutProps = {
 	title?: string;
-	children?: string | JSX.Element;
-}
+	children?: Children;
+};
 
 export function Layout({ title, children }: LayoutProps) {
 	return (
