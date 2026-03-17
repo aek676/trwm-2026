@@ -14,7 +14,6 @@ export function LocationInfo({ title }: LocationInfoProps) {
 			</div>
 
 			<div class="row">
-				{/* Añadimos flex y gap aquí para separar la sección superior de la de reviews */}
 				<div class="col-9 d-flex flex-column gap-4">
 					<div class="row">
 						<div class="col">
@@ -27,7 +26,6 @@ export function LocationInfo({ title }: LocationInfoProps) {
 							</p>
 							<p>125 High Street, Reading RG6 1PS </p>
 
-							{/* Contenedor limpio para espaciar las tarjetas automáticamente */}
 							<div class="d-flex flex-column gap-4">
 								<div class="card text-white bg-primary">
 									<div class="card-body">
@@ -86,7 +84,6 @@ export function LocationInfo({ title }: LocationInfoProps) {
 									</button>
 								</div>
 
-								{/* Aplicamos también gap a las reviews para mantener el código limpio */}
 								<div class="d-flex flex-column gap-4">
 									<div class="card-text">
 										<div class="bg-secondary row justify-content-start">
