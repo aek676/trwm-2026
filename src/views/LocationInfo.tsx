@@ -69,7 +69,9 @@ export function LocationInfo({ title }: LocationInfoProps) {
 								</div>
 							</div>
 						</div>
+					</div>
 
+					<div class="row">
 						<div class="card text-white bg-primary">
 							<div class="card-body">
 								<div class="d-flex justify-content-between align-items-center">
@@ -80,46 +82,31 @@ export function LocationInfo({ title }: LocationInfoProps) {
 								</div>
 
 								<div class="card-text">
-									<div class="bg-secondary">
-										<p class="rating">
+									<div class="bg-secondary row justify-content-start">
+										<p class="rating col-auto">
 											<i class="bi bi-star-fill"></i>
 											<i class="bi bi-star-fill"></i>
 											<i class="bi bi-star-fill"></i>
 											<i class="bi bi-star"></i>
 											<i class="bi bi-star"></i>
 										</p>
-										<p> Simon Holmes </p>
-										<small>16 February 2019</small>
+										<p class="col-auto"> Simon Holmes </p>
+										<small class="col-auto">16 February 2019</small>
 									</div>
 									<p> What a great place</p>
 								</div>
 
 								<div class="card-text">
-									<div class="bg-secondary d-flex align-items-center gap-3 p-2 rounded">
-										<p class="rating">
-											<i class="bi bi-star-fill"></i>
-											<i class="bi bi-star-fill"></i>
-											<i class="bi bi-star-fill"></i>
-											<i class="bi bi-star"></i>
-											<i class="bi bi-star"></i>
-										</p>
-										<p> Simon Holmes </p>
-										<small>16 February 2019</small>
-									</div>
-									<p> What a great place</p>
-								</div>
-
-								<div class="card-text">
-									<div class="bg-secondary">
-										<p class="rating">
+									<div class="bg-secondary row justify-content-start">
+										<p class="rating col-auto">
 											<i class="bi bi-star-fill"></i>
 											<i class="bi bi-star-fill"></i>
 											<i class="bi bi-star-fill"></i>
 											<i class="bi bi-star-fill"></i>
 											<i class="bi bi-star"></i>
 										</p>
-										<p>Antonio Becerra</p>
-										<small>14 February 2019</small>
+										<p class="col-auto">Antonio Becerra</p>
+										<small class="col-auto">14 February 2019</small>
 									</div>
 									<p>It was okay. Coffee wasn't great.</p>
 								</div>
