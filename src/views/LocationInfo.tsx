@@ -13,9 +13,9 @@ export function LocationInfo({ title }: LocationInfoProps) {
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-12 col-lg-9">
+				<div class="col-9">
 					<div class="row">
-						<div class="col-12 col-md-6">
+						<div class="col">
 							<p class="rating">
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star-fill"></i>
@@ -24,6 +24,7 @@ export function LocationInfo({ title }: LocationInfoProps) {
 								<i class="bi bi-star"></i>
 							</p>
 							<p>125 High Street, Reading RG6 1PS </p>
+
 							<div class="card text-white bg-primary">
 								<div class="card-body">
 									<h2 class="card-title">Opening hours</h2>
@@ -32,6 +33,7 @@ export function LocationInfo({ title }: LocationInfoProps) {
 									<p class="card-text">Sunday: closed</p>
 								</div>
 							</div>
+
 							<div class="card text-white bg-primary">
 								<div class="card-body">
 									<h2 class="card-title">Facilities</h2>
@@ -43,7 +45,98 @@ export function LocationInfo({ title }: LocationInfoProps) {
 								</div>
 							</div>
 						</div>
+
+						<div class="col">
+							<div class="card text-white bg-primary">
+								<div class="card-body">
+									<h2 class="card-title">Location map</h2>
+									<div style="width: 100%">
+										<iframe
+											title="Location Map"
+											width="100%"
+											height="300"
+											frameborder="0"
+											scrolling="no"
+											marginheight="0"
+											marginwidth="0"
+											src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Les%20Rambles,%201%20Barcelona,%20Spain+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+										>
+											<a href="https://www.mapsdirections.info/calcular-la-poblacion-en-un-mapa/">
+												Medir población
+											</a>
+										</iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card text-white bg-primary">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-center">
+									<h2 class="card-title">Customer reviews</h2>
+									<button type="button" class="btn btn-danger">
+										Add review
+									</button>
+								</div>
+
+								<div class="card-text">
+									<div class="bg-secondary">
+										<p class="rating">
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star"></i>
+											<i class="bi bi-star"></i>
+										</p>
+										<p> Simon Holmes </p>
+										<small>16 February 2019</small>
+									</div>
+									<p> What a great place</p>
+								</div>
+
+								<div class="card-text">
+									<div class="bg-secondary d-flex align-items-center gap-3 p-2 rounded">
+										<p class="rating">
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star"></i>
+											<i class="bi bi-star"></i>
+										</p>
+										<p> Simon Holmes </p>
+										<small>16 February 2019</small>
+									</div>
+									<p> What a great place</p>
+								</div>
+
+								<div class="card-text">
+									<div class="bg-secondary">
+										<p class="rating">
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star"></i>
+										</p>
+										<p>Antonio Becerra</p>
+										<small>14 February 2019</small>
+									</div>
+									<p>It was okay. Coffee wasn't great.</p>
+								</div>
+							</div>
+						</div>
 					</div>
+				</div>
+
+				<div class="col">
+					<p>
+						Starcups is on Loc8r because it has accesible wifi and space to sit
+						down with your laptop and get some work done.
+					</p>
+					<p>
+						If you've been and you like it. or if you don't. please leave a
+						review to help other people just like you.
+					</p>
 				</div>
 			</div>
 		</Layout>
