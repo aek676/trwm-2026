@@ -1,6 +1,7 @@
 import { Elysia } from "elysia";
 import { locationCtrl, othersCtrl, usersCtrl } from "../controllers";
 import {
+	About,
 	HomeView,
 	LoadingList,
 	LocationInfo,
@@ -22,7 +23,7 @@ export default new Elysia()
 	})
 	.get("/about", () => {
 		const { title } = othersCtrl.about();
-		return <HomeView title={title} />;
+		return <About title={title} />;
 	})
 	.get("/users", () => {
 		const message = usersCtrl.index();

@@ -1,10 +1,10 @@
 import { Layout } from "./Layout";
 
-interface LocationInfoProps {
+interface LocationReviewFormProps {
 	title: string;
 }
 
-export function LocationReviewForm({ title }: LocationInfoProps) {
+export function LocationReviewForm({ title }: LocationReviewFormProps) {
 	return (
 		<Layout title={title}>
 			<div class="row banner">
