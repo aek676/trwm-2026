@@ -1,6 +1,11 @@
 import { Elysia } from "elysia";
 import { locationCtrl, othersCtrl, usersCtrl } from "../controllers";
-import { HomeView, LoadingList, LocationInfo } from "../views";
+import {
+	HomeView,
+	LoadingList,
+	LocationInfo,
+	LocationReviewForm,
+} from "../views";
 
 export default new Elysia()
 	.get("/", () => {
@@ -13,7 +18,7 @@ export default new Elysia()
 	})
 	.get("/location/review/new", () => {
 		const { title } = locationCtrl.addReview();
-		return <HomeView title={title} />;
+		return <LocationReviewForm title={title} />;
 	})
 	.get("/about", () => {
 		const { title } = othersCtrl.about();
