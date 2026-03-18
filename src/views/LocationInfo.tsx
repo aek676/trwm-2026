@@ -7,11 +7,7 @@ interface LocationInfoProps {
 export function LocationInfo({ title }: LocationInfoProps) {
 	return (
 		<Layout title={title}>
-			<div class="row banner mb-4">
-				<div class="col-12">
-					<h1>Starcups</h1>
-				</div>
-			</div>
+			<h1>Starcups</h1>
 
 			<div class="row">
 				<div class="col-9 d-flex flex-column gap-4">
@@ -40,9 +36,9 @@ export function LocationInfo({ title }: LocationInfoProps) {
 									<div class="card-body">
 										<h2 class="card-title">Facilities</h2>
 										<p class="d-flex gap-2 card-text">
-											<span class="badge bg-warning"> Hot drinks</span>
-											<span class="badge bg-warning"> Food</span>
-											<span class="badge bg-warning"> Premium Wifi</span>
+											<span class="badge bg-warning">Hot drinks</span>
+											<span class="badge bg-warning">Food</span>
+											<span class="badge bg-warning">Premium Wifi</span>
 										</p>
 									</div>
 								</div>
@@ -79,9 +75,9 @@ export function LocationInfo({ title }: LocationInfoProps) {
 							<div class="card-body">
 								<div class="d-flex justify-content-between align-items-center mb-3">
 									<h2 class="card-title m-0">Customer reviews</h2>
-									<button type="button" class="btn btn-danger">
+									<a class="btn btn-danger" href="/location/review/new">
 										Add review
-									</button>
+									</a>
 								</div>
 
 								<div class="d-flex flex-column gap-4">
