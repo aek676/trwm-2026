@@ -93,7 +93,14 @@ export default new Elysia()
 	})
 	.get("/about", () => {
 		const { title } = othersCtrl.about();
-		return <About title={title} />;
+		return (
+			<About
+				title={title}
+				about={
+					"Loc8r was created to help people find places to sit down and get a bit of work done."
+				}
+			/>
+		);
 	})
 	.get("/users", () => {
 		const message = usersCtrl.index();
