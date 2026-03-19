@@ -1,47 +1,68 @@
 import { Layout } from "./Layout";
 
-interface LoadingListProps {
+interface PageHeader {
 	title: string;
+	strapline: string;
 }
 
-export function LoadingList({ title }: LoadingListProps) {
+interface Location {
+	name: string;
+	address: string;
+	rating: number;
+	facilites: string[];
+	distance: string;
+}
+
+interface LoadingListProps {
+	title: string;
+	pageHeader: PageHeader;
+	locations: Location[];
+}
+
+export function LoadingList({
+	title,
+	pageHeader,
+	locations,
+}: LoadingListProps) {
 	return (
 		<Layout title={title}>
 			<div class="row banner col-12">
 				<h1>
-					Loc8r
-					<small> &nbsp; Find a places to work with wifi near you!</small>
+					{pageHeader.title}
+					<small> &nbsp; {pageHeader.strapline}</small>
 				</h1>
 			</div>
 			<div class="row">
 				<div class="col-12 col-md-8">
-					<div class="card">
-						<div class="card-header">
-							<h2>
-								<a href="/location"> Starcups</a>
-								<small>
-									<div class="d-inline-flex gap-1">
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star-fill"></i>
-										<i class="bi bi-star"></i>
-										<i class="bi bi-star"></i>
-									</div>
-								</small>
-								<span class="badge rounded-pill float-end bg-primary">
-									100m
-								</span>
-							</h2>
+					{locations.map((loc) => (
+						<div class="card mb-1">
+							<div class="card-header">
+								<h2>
+									<a href="/location">{loc.name}</a>
+									<small>
+										<div class="d-inline-flex gap-1">
+											{[1, 2, 3, 4, 5].map((n) => (
+												<i
+													class={`bi bi-star${n <= loc.rating ? "-fill" : ""}`}
+												/>
+											))}
+										</div>
+									</small>
+									<span class="badge rounded-pill float-end bg-primary">
+										{loc.distance}
+									</span>
+								</h2>
+							</div>
+							<div class="card-body">
+								<p class="address">{loc.address}</p>
+								<p class="d-flex gap-2">
+									{loc.facilites.map((fac) => (
+										<span class="badge bg-warning">{fac}</span>
+									))}
+								</p>
+							</div>
 						</div>
-						<div class="card-body">
-							<p class="address">125 High Street, Reading RG6 1PS</p>
-							<p class="d-flex gap-2">
-								<span class="badge bg-warning"> Hot drinks</span>
-								<span class="badge bg-warning"> Food</span>
-								<span class="badge bg-warning"> Premium Wifi</span>
-							</p>
-						</div>
-					</div>
+					))}
 				</div>
 				<div class="col-12 col-md-4">
 					<p class="lead">

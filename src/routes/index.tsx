@@ -11,7 +11,38 @@ import {
 export default new Elysia()
 	.get("/", () => {
 		const { title } = locationCtrl.homeList();
-		return <LoadingList title={title} />;
+		return (
+			<LoadingList
+				title={title}
+				pageHeader={{
+					title: "LOC8R",
+					strapline: "Find places to work with wifi near you!",
+				}}
+				locations={[
+					{
+						name: "Starcups",
+						address: "125 High Street, Reading, RG6 1PS",
+						rating: 3,
+						facilites: ["Hot drinks", "Food", "Premium wifi"],
+						distance: "100m",
+					},
+					{
+						name: "Cafe Hero",
+						address: "125 High Street, Reading, RG6 1PS",
+						rating: 4,
+						facilites: ["Hot drinks", "Food", "Premium wifi"],
+						distance: "200m",
+					},
+					{
+						name: "Burger Queen",
+						address: "125 High Street, Reading, RG6 1PS",
+						rating: 2,
+						facilites: ["Food", "Premium wifi"],
+						distance: "300m",
+					},
+				]}
+			/>
+		);
 	})
 	.get("/location", () => {
 		const { title } = locationCtrl.locationInfo();
