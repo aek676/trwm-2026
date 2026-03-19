@@ -9,7 +9,7 @@ interface Location {
 	name: string;
 	address: string;
 	rating: number;
-	facilites: string[];
+	facilities: string[];
 	distance: string;
 }
 
@@ -56,7 +56,7 @@ export function LoadingList({
 							<div class="card-body">
 								<p class="address">{loc.address}</p>
 								<p class="d-flex gap-2">
-									{loc.facilites.map((fac) => (
+									{loc.facilities.map((fac) => (
 										<span class="badge bg-warning">{fac}</span>
 									))}
 								</p>

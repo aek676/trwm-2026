@@ -23,21 +23,21 @@ export default new Elysia()
 						name: "Starcups",
 						address: "125 High Street, Reading, RG6 1PS",
 						rating: 3,
-						facilites: ["Hot drinks", "Food", "Premium wifi"],
+						facilities: ["Hot drinks", "Food", "Premium wifi"],
 						distance: "100m",
 					},
 					{
 						name: "Cafe Hero",
 						address: "125 High Street, Reading, RG6 1PS",
 						rating: 4,
-						facilites: ["Hot drinks", "Food", "Premium wifi"],
+						facilities: ["Hot drinks", "Food", "Premium wifi"],
 						distance: "200m",
 					},
 					{
 						name: "Burger Queen",
 						address: "125 High Street, Reading, RG6 1PS",
 						rating: 2,
-						facilites: ["Food", "Premium wifi"],
+						facilities: ["Food", "Premium wifi"],
 						distance: "300m",
 					},
 				]}
@@ -46,7 +46,46 @@ export default new Elysia()
 	})
 	.get("/location", () => {
 		const { title } = locationCtrl.locationInfo();
-		return <LocationInfo title={title} />;
+		return (
+			<LocationInfo
+				title={title}
+				rating={3}
+				address="125 High Street, Reading, RG6 1PS"
+				shedule={[
+					{
+						days: "Monday - Friday",
+						opening: "7:00am",
+						closing: "7:00pm",
+						isClosed: false,
+					},
+					{
+						days: "Saturday",
+						opening: "8:00am",
+						closing: "5:00pm",
+						isClosed: false,
+					},
+					{
+						days: "Sunday",
+						isClosed: true,
+					},
+				]}
+				facilities={["Hot drinks", "Food", "Premium wifi"]}
+				customerReviews={[
+					{
+						name: "Simon Holmes",
+						rating: 3,
+						date: "2019-02-16",
+						review: "What a great place.",
+					},
+					{
+						name: "Antonio Becerra",
+						rating: 4,
+						date: "2019-02-14",
+						review: "It was okay. Coffee wasn't great.",
+					},
+				]}
+			/>
+		);
 	})
 	.get("/location/review/new", () => {
 		const { title } = locationCtrl.addReview();
