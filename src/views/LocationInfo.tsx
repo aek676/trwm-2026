@@ -24,8 +24,8 @@ export function LocationInfo({ title }: LocationInfoProps) {
 
 							<div class="d-flex flex-column gap-4">
 								<div class="card text-white bg-primary">
+									<h2 class="card-header">Opening hours</h2>
 									<div class="card-body">
-										<h2 class="card-title">Opening hours</h2>
 										<p class="card-text">Monday - Friday : 7:00am - 7:00pm</p>
 										<p class="card-text">Saturday : 8:00am - 5:00pm</p>
 										<p class="card-text">Sunday: closed</p>
@@ -33,8 +33,8 @@ export function LocationInfo({ title }: LocationInfoProps) {
 								</div>
 
 								<div class="card text-white bg-primary">
+									<h2 class="card-header">Facilities</h2>
 									<div class="card-body">
-										<h2 class="card-title">Facilities</h2>
 										<p class="d-flex gap-2 card-text">
 											<span class="badge bg-warning">Hot drinks</span>
 											<span class="badge bg-warning">Food</span>
@@ -47,8 +47,8 @@ export function LocationInfo({ title }: LocationInfoProps) {
 
 						<div class="col">
 							<div class="card text-white bg-primary">
+								<h2 class="card-header">Location map</h2>
 								<div class="card-body">
-									<h2 class="card-title">Location map</h2>
 									<div style="width: 100%">
 										<iframe
 											title="Location Map"
@@ -72,14 +72,14 @@ export function LocationInfo({ title }: LocationInfoProps) {
 
 					<div class="row">
 						<div class="card text-white bg-primary">
-							<div class="card-body">
-								<div class="d-flex justify-content-between align-items-center mb-3">
-									<h2 class="card-title m-0">Customer reviews</h2>
-									<a class="btn btn-danger" href="/location/review/new">
-										Add review
-									</a>
-								</div>
+							<div class="card-header d-flex justify-content-between align-items-center">
+								<h2>Customer reviews</h2>
+								<a class="btn btn-danger" href="/location/review/new">
+									Add review
+								</a>
+							</div>
 
+							<div class="card-body">
 								<div class="d-flex flex-column gap-4">
 									<div class="card-text">
 										<div class="bg-secondary row justify-content-start">
