@@ -1,4 +1,4 @@
-export { About } from "./About.tsx";
+export { About } from "./About";
 export { ErrorView } from "./ErrorView";
 export { HomeView } from "./HomeView";
 export { Layout } from "./Layout";
