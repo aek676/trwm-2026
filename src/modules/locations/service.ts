@@ -1,5 +1,5 @@
-import { Location } from "../models";
-import type { ReviewBody } from "./location.model";
+import { Location } from "../../models";
+import type { ReviewBody } from "./model";
 
 const homeList = async () => {
 	const locations = await Location.find().lean();
@@ -56,4 +56,9 @@ const doAddReview = async (id: string, body: ReviewBody) => {
 	});
 };
 
-export default { homeList, locationInfo, addReview, doAddReview };
+export const locationService = {
+	homeList,
+	locationInfo,
+	addReview,
+	doAddReview,
+};

@@ -1,7 +1,7 @@
 import { t } from "elysia";
 
 export const LocationParamsSchema = t.Object({
-	id: t.String(),
+	locationId: t.String(),
 });
 
 export const ReviewBodySchema = t.Object({
