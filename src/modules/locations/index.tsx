@@ -1,12 +1,7 @@
 import { Elysia } from "elysia";
-import {
-	ErrorView,
-	LoadingList,
-	LocationInfo,
-	LocationReviewForm,
-} from "../../views";
-import { LocationParamsSchema, ReviewBodySchema } from "./model";
-import { locationService } from "./service";
+import { ErrorView, LoadingList, LocationInfo } from "../../views";
+import { LocationParamsSchema } from "./model";
+import * as locationService from "./service";
 
 export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 	.get("/", async () => {
@@ -52,36 +47,4 @@ export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 			);
 		},
 		{ params: LocationParamsSchema },
-	)
-	.get(
-		"/:locationId/review/new",
-		async ({ params, set }) => {
-			const data = await locationService.addReview(params.locationId);
-
-			if (!data) {
-				set.status = 404;
-				return <ErrorView message="Location not found" status={404} />;
-			}
-
-			return (
-				<LocationReviewForm
-					title={data.title}
-					locationId={data.locationId}
-					locationName={data.locationName}
-				/>
-			);
-		},
-		{ params: LocationParamsSchema },
-	)
-	.post(
-		"/:locationId/review/new",
-		async ({ params, body, set }) => {
-			await locationService.doAddReview(params.locationId, body);
-			set.status = 302;
-			set.headers.location = `/locations/${params.locationId}`;
-		},
-		{
-			params: LocationParamsSchema,
-			body: ReviewBodySchema,
-		},
 	);
