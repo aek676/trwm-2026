@@ -85,9 +85,6 @@ export function LocationInfo({
 											width="100%"
 											height="300"
 											frameborder="0"
-											scrolling="no"
-											marginheight="0"
-											marginwidth="0"
 											src="https://maps.google.com/maps?width=100%25&height=600&hl=es&q=Les%20Rambles,%201%20Barcelona,%20Spain+(Mi%20nombre%20de%20egocios)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
 										>
 											<a href="https://www.mapsdirections.info/calcular-la-poblacion-en-un-mapa/">
