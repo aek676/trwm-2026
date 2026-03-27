@@ -19,6 +19,9 @@ const app = new Elysia()
 		}),
 	)
 	.use(routes)
+	.use((app) =>
+		process.env.NODE_ENV !== "production" ? app.use(openapi()) : app,
+	)
 	.onError(({ code, error }) => {
 		if (code === "NOT_FOUND") {
 			return (
@@ -42,7 +45,6 @@ const app = new Elysia()
 	.listen(3000);
 
 if (process.env.NODE_ENV !== "production") {
-	app.use(openapi());
 	console.log(
 		`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
 	);
