@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 import { locationCtrl, othersCtrl, usersCtrl } from "../controllers";
 import {
 	About,
+	ErrorView,
 	HomeView,
 	LoadingList,
 	LocationInfo,
@@ -9,8 +10,8 @@ import {
 } from "../views";
 
 export default new Elysia()
-	.get("/", () => {
-		const { title } = locationCtrl.homeList();
+	.get("/", async () => {
+		const { title, locations } = await locationCtrl.homeList();
 		return (
 			<LoadingList
 				title={title}
@@ -18,72 +19,33 @@ export default new Elysia()
 					title: "LOC8R",
 					strapline: "Find places to work with wifi near you!",
 				}}
-				locations={[
-					{
-						name: "Starcups",
-						address: "125 High Street, Reading, RG6 1PS",
-						rating: 3,
-						facilities: ["Hot drinks", "Food", "Premium wifi"],
-						distance: "100m",
-					},
-					{
-						name: "Cafe Hero",
-						address: "125 High Street, Reading, RG6 1PS",
-						rating: 4,
-						facilities: ["Hot drinks", "Food", "Premium wifi"],
-						distance: "200m",
-					},
-					{
-						name: "Burger Queen",
-						address: "125 High Street, Reading, RG6 1PS",
-						rating: 2,
-						facilities: ["Food", "Premium wifi"],
-						distance: "300m",
-					},
-				]}
+				locations={locations.map((loc) => ({
+					id: loc._id.toString(),
+					name: loc.name,
+					address: loc.address ?? "",
+					rating: loc.rating,
+					facilities: loc.facilities ?? [],
+					distance: "N/A", // TODO: calculate from coords
+				}))}
 			/>
 		);
 	})
-	.get("/location", () => {
-		const { title } = locationCtrl.locationInfo();
+	.get("/location/:id", async ({ params, set }) => {
+		const data = await locationCtrl.locationInfo(params.id);
+		if (!data) {
+			set.status = 404;
+			return <ErrorView message="Location not found" status={404} />;
+		}
+
 		return (
 			<LocationInfo
-				title={title}
-				rating={3}
-				address="125 High Street, Reading, RG6 1PS"
-				shedule={[
-					{
-						days: "Monday - Friday",
-						opening: "7:00am",
-						closing: "7:00pm",
-						isClosed: false,
-					},
-					{
-						days: "Saturday",
-						opening: "8:00am",
-						closing: "5:00pm",
-						isClosed: false,
-					},
-					{
-						days: "Sunday",
-						isClosed: true,
-					},
-				]}
-				facilities={["Hot drinks", "Food", "Premium wifi"]}
-				customerReviews={[
-					{
-						name: "Simon Holmes",
-						rating: 3,
-						date: "2019-02-16",
-						review: "What a great place.",
-					},
-					{
-						name: "Antonio Becerra",
-						rating: 4,
-						date: "2019-02-14",
-						review: "It was okay. Coffee wasn't great.",
-					},
-				]}
+				title={data.title}
+				name={data.name}
+				rating={data.rating}
+				address={data.address}
+				shedule={data.shedule}
+				facilities={data.facilities}
+				customerReviews={data.customerReviews}
 			/>
 		);
 	})

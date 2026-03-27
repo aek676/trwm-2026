@@ -17,6 +17,7 @@ interface OpeningHoursData {
 
 interface LocationInfoProps {
 	title: string;
+	name: string;
 	rating: number;
 	address: string;
 	shedule: OpeningHoursData[];
@@ -26,6 +27,7 @@ interface LocationInfoProps {
 
 export function LocationInfo({
 	title,
+	name,
 	rating,
 	address,
 	shedule,
@@ -34,7 +36,7 @@ export function LocationInfo({
 }: LocationInfoProps) {
 	return (
 		<Layout title={title}>
-			<h1>Starcups</h1>
+			<h1>{name}</h1>
 
 			<div class="row">
 				<div class="col-9 d-flex flex-column gap-4">

@@ -8,6 +8,7 @@ const locationSchema = new Schema(
 		address: String,
 		rating: { type: Number, default: 0, min: 0, max: 5 },
 		facilities: [String],
+		// TODO: add distance field
 		coords: {
 			type: { type: String },
 			coordinates: [Number],
