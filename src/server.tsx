@@ -3,8 +3,11 @@ import openapi from "@elysiajs/openapi";
 import { staticPlugin } from "@elysiajs/static";
 import { Elysia } from "elysia";
 import { Logestic } from "logestic";
+import { connectDB } from "./config/db";
 import routes from "./routes/index";
 import { ErrorView } from "./views";
+
+await connectDB();
 
 const app = new Elysia()
 	.use(html())

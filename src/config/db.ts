@@ -1,9 +1,7 @@
 import { connect } from "mongoose";
 
 export const connectDB = async () => {
-	if (!Bun.env.MONGODB_URI) {
-		throw new Error("MONGODB_URI is not set");
-	}
+	if (!Bun.env.MONGODB_URI) throw new Error("MONGODB_URI is not set");
 
 	try {
 		await connect(Bun.env.MONGODB_URI, {
