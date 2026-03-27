@@ -39,7 +39,7 @@ export function LoadingList({
 						<div class="card mb-1">
 							<div class="card-header">
 								<h2>
-									<a href={`/location/${loc.id}`}>{loc.name}</a>
+									<a href={`/locations/${loc.id}`}>{loc.name}</a>
 									<small>
 										<div class="d-inline-flex gap-1">
 											{[1, 2, 3, 4, 5].map((n) => (

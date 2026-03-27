@@ -107,7 +107,7 @@ export function LocationInfo({
 								<h2>Customer reviews</h2>
 								<a
 									class="btn btn-danger"
-									href={`/location/${locationId}/review/new`}
+									href={`/locations/${locationId}/review/new`}
 								>
 									Add review
 								</a>

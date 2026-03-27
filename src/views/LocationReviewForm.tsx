@@ -20,7 +20,7 @@ export function LocationReviewForm({
 			</div>
 			<div class="row">
 				<div class="col-12 col-md-8">
-					<form action={`/location/${locationId}/review/new`} method="POST">
+					<form action={`/locations/${locationId}/review/new`} method="POST">
 						<div class="row mb-3">
 							<label for="name" class="col-sm-2 col-form-label">
 								Name
