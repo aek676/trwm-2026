@@ -18,6 +18,7 @@ interface OpeningHoursData {
 interface LocationInfoProps {
 	title: string;
 	name: string;
+	locationId: string;
 	rating: number;
 	address: string;
 	shedule: OpeningHoursData[];
@@ -28,6 +29,7 @@ interface LocationInfoProps {
 export function LocationInfo({
 	title,
 	name,
+	locationId,
 	rating,
 	address,
 	shedule,
@@ -103,7 +105,10 @@ export function LocationInfo({
 						<div class="card text-white bg-primary">
 							<div class="card-header d-flex justify-content-between align-items-center">
 								<h2>Customer reviews</h2>
-								<a class="btn btn-danger" href="/location/review/new">
+								<a
+									class="btn btn-danger"
+									href={`/location/${locationId}/review/new`}
+								>
 									Add review
 								</a>
 							</div>

@@ -2,19 +2,25 @@ import { Layout } from "./Layout";
 
 interface LocationReviewFormProps {
 	title: string;
+	locationId: string;
+	locationName: string;
 }
 
-export function LocationReviewForm({ title }: LocationReviewFormProps) {
+export function LocationReviewForm({
+	title,
+	locationId,
+	locationName,
+}: LocationReviewFormProps) {
 	return (
 		<Layout title={title}>
 			<div class="row banner">
 				<div class="col-12">
-					<h1>Review Star</h1>
+					<h1>Review {locationName}</h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-12 col-md-8">
-					<form action="/location" method="GET">
+					<form action={`/location/${locationId}/review/new`} method="POST">
 						<div class="row mb-3">
 							<label for="name" class="col-sm-2 col-form-label">
 								Name
@@ -34,11 +40,9 @@ export function LocationReviewForm({ title }: LocationReviewFormProps) {
 									class="form-select form-select-sm"
 									name="rating"
 								>
-									<option>5</option>
-									<option>4</option>
-									<option>3</option>
-									<option>2</option>
-									<option>1</option>
+									{[5, 4, 3, 2, 1].map((n) => (
+										<option value={String(n)}>{n}</option>
+									))}
 								</select>
 							</div>
 						</div>

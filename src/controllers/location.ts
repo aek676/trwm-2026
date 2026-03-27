@@ -1,4 +1,5 @@
 import { Location } from "../models";
+import type { ReviewBody } from "./location.model";
 
 const homeList = async () => {
 	const locations = await Location.find().lean();
@@ -32,6 +33,27 @@ const locationInfo = async (id: string) => {
 	};
 };
 
-const addReview = () => ({ title: "Add review" });
+const addReview = async (id: string) => {
+	const location = await Location.findById(id).lean();
+	if (!location) return null;
+	return {
+		title: "Add review",
+		locationId: id,
+		locationName: location.name,
+	};
+};
 
-export default { homeList, locationInfo, addReview };
+const doAddReview = async (id: string, body: ReviewBody) => {
+	await Location.findByIdAndUpdate(id, {
+		$push: {
+			reviews: {
+				author: body.name,
+				rating: body.rating,
+				reviewText: body.review,
+				createdOn: new Date(),
+			},
+		},
+	});
+};
+
+export default { homeList, locationInfo, addReview, doAddReview };
