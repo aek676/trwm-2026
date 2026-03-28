@@ -45,4 +45,16 @@ export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 			return { id };
 		},
 		{ body: LocationModel.createLocationBody },
+	)
+	.put(
+		"/:locationId",
+		async ({ params, body, set }) => {
+			const id = await LocationService.updateLocation(params.locationId, body);
+			set.status = 200;
+			return { id };
+		},
+		{
+			params: LocationModel.locationParams,
+			body: LocationModel.updateLocationBody,
+		},
 	);

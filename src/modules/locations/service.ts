@@ -50,3 +50,16 @@ export async function createLocation(
 	const location = await Location.create(data);
 	return location._id.toString();
 }
+
+export async function updateLocation(
+	id: string,
+	data: LocationModel["updateLocationBody"],
+) {
+	const location = await Location.findByIdAndUpdate(id, data, {
+		new: true,
+	}).lean();
+
+	if (!location) throw status(404, "Location not found");
+
+	return location._id.toString();
+}
