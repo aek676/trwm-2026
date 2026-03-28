@@ -28,20 +28,22 @@ db.locations.insertMany([
 				closed: true,
 			},
 		],
-		reviews: [
-			{
-				author: "Simon Holmes",
-				rating: 3,
-				reviewText: "What a great place.",
-				createdOn: new Date("2019-02-16"),
-			},
-			{
-				author: "Antonio Becerra",
-				rating: 4,
-				reviewText: "It was okay. Coffee wasn't great.",
-				createdOn: new Date("2019-02-14"),
-			},
-		],
+	reviews: [
+		{
+			_id: new ObjectId(),
+			author: "Simon Holmes",
+			rating: 3,
+			reviewText: "What a great place.",
+			createdOn: new Date("2019-02-16"),
+		},
+		{
+			_id: new ObjectId(),
+			author: "Antonio Becerra",
+			rating: 4,
+			reviewText: "It was okay. Coffee wasn't great.",
+			createdOn: new Date("2019-02-14"),
+		},
+	],
 		createdAt: new Date(),
 		updatedAt: new Date(),
 	},
