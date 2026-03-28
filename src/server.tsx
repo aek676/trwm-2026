@@ -22,7 +22,23 @@ const app = new Elysia()
 	.use((app) =>
 		process.env.NODE_ENV !== "production" ? app.use(openapi()) : app,
 	)
-	.onError(({ code, error }) => {
+	.onError(({ code, error, status }) => {
+		if (typeof code === "number") {
+			const message =
+				"response" in error ? String(error.response) : error.message;
+
+			return status(
+				code,
+				<ErrorView
+					message={message}
+					status={code}
+					stack={
+						process.env.NODE_ENV === "production" ? undefined : error.stack
+					}
+				/>,
+			);
+		}
+
 		if (code === "NOT_FOUND") {
 			return (
 				<ErrorView
@@ -34,6 +50,7 @@ const app = new Elysia()
 				/>
 			);
 		}
+
 		return (
 			<ErrorView
 				message={error.message}
