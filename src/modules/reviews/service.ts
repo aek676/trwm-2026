@@ -1,17 +1,23 @@
+import { status } from "elysia";
 import { Location } from "../../models";
-import type { ReviewBody } from "./model";
+import type { ReviewModel } from "./model";
 
-export const addReview = async (locationId: string) => {
+export async function addReview(locationId: string) {
 	const location = await Location.findById(locationId).lean();
-	if (!location) return null;
+
+	if (!location) throw status(404, "Location not found");
+
 	return {
 		title: "Add review",
 		locationId,
 		locationName: location.name,
 	};
-};
+}
 
-export const doAddReview = async (locationId: string, body: ReviewBody) => {
+export async function doAddReview(
+	locationId: string,
+	body: ReviewModel["reviewBody"],
+) {
 	await Location.findByIdAndUpdate(locationId, {
 		$push: {
 			reviews: {
@@ -22,4 +28,4 @@ export const doAddReview = async (locationId: string, body: ReviewBody) => {
 			},
 		},
 	});
-};
+}
