@@ -29,3 +29,33 @@ export async function doAddReview(
 		},
 	});
 }
+
+export async function updateReview(
+	locationId: string,
+	reviewId: string,
+	body: ReviewModel["updateReviewBody"],
+) {
+	const location = await Location.findOneAndUpdate(
+		{ _id: locationId, "reviews._id": reviewId },
+		{
+			$set: {
+				"reviews.$.author": body.name,
+				"reviews.$.rating": body.rating,
+				"reviews.$.reviewText": body.review,
+			},
+		},
+		{ new: true },
+	).lean();
+	if (!location) throw status(404, "Location or review not found");
+	return location._id.toString();
+}
+
+export async function deleteReview(locationId: string, reviewId: string) {
+	const location = await Location.findOneAndUpdate(
+		{ _id: locationId },
+		{ $pull: { reviews: { _id: reviewId } } },
+		{ new: true },
+	).lean();
+	if (!location) throw status(404, "Location not found");
+	return location._id.toString();
+}

@@ -28,7 +28,35 @@ export const reviews = new Elysia({ name: "reviews", prefix: "/locations" })
 			set.headers.location = `/locations/${params.locationId}`;
 		},
 		{
-			params: LocationModel.locationParams,
+			params: ReviewModel.reviewParams,
 			body: ReviewModel.reviewBody,
 		},
+	)
+	.put(
+		"/:locationId/review/:reviewId",
+		async ({ params, body, set }) => {
+			const id = await ReviewService.updateReview(
+				params.locationId,
+				params.reviewId,
+				body,
+			);
+			set.status = 200;
+			return { id };
+		},
+		{
+			params: ReviewModel.reviewWithIdParams,
+			body: ReviewModel.updateReviewBody,
+		},
+	)
+	.delete(
+		"/:locationId/review/:reviewId",
+		async ({ params, set }) => {
+			const id = await ReviewService.deleteReview(
+				params.locationId,
+				params.reviewId,
+			);
+			set.status = 200;
+			return { id };
+		},
+		{ params: ReviewModel.reviewWithIdParams },
 	);
