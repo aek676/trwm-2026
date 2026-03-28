@@ -1,5 +1,30 @@
-import { t } from "elysia";
+import { t, type UnwrapSchema } from "elysia";
 
-export const LocationParamsSchema = t.Object({
-	locationId: t.String(),
+const OpeningTimeSchema = t.Object({
+	day: t.String(),
+	opening: t.Optional(t.String()),
+	closing: t.Optional(t.String()),
+	closed: t.Boolean(),
 });
+
+export const LocationModel = {
+	locationParams: t.Object({
+		locationId: t.String(),
+	}),
+	createLocationBody: t.Object({
+		name: t.String(),
+		address: t.Optional(t.String()),
+		facilities: t.Optional(t.Array(t.String())),
+		coords: t.Optional(
+			t.Object({
+				type: t.Optional(t.String()),
+				coordinates: t.Array(t.Number()),
+			}),
+		),
+		openingTimes: t.Optional(t.Array(OpeningTimeSchema)),
+	}),
+} as const;
+
+export type LocationModel = {
+	[k in keyof typeof LocationModel]: UnwrapSchema<(typeof LocationModel)[k]>;
+};

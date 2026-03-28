@@ -1,6 +1,8 @@
+import { status } from "elysia";
 import { Location } from "../../models";
+import type { LocationModel } from "./model";
 
-export const homeList = async () => {
+export async function homeList() {
 	const locations = await Location.find().lean();
 	return {
 		title: "Home",
@@ -13,11 +15,11 @@ export const homeList = async () => {
 			distance: "N/A",
 		})),
 	};
-};
+}
 
-export const locationInfo = async (id: string) => {
+export async function locationInfo(id: string) {
 	const location = await Location.findById(id).lean();
-	if (!location) return null;
+	if (!location) throw status(404, "Location not found");
 
 	return {
 		title: "Location Info",
@@ -40,4 +42,11 @@ export const locationInfo = async (id: string) => {
 			review: r.reviewText ?? "",
 		})),
 	};
-};
+}
+
+export async function createLocation(
+	data: LocationModel["createLocationBody"],
+) {
+	const location = await Location.create(data);
+	return location._id.toString();
+}

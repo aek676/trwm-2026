@@ -1,11 +1,11 @@
 import { Elysia } from "elysia";
-import { ErrorView, LoadingList, LocationInfo } from "../../views";
-import { LocationParamsSchema } from "./model";
-import * as locationService from "./service";
+import { LoadingList, LocationInfo } from "../../views";
+import { LocationModel } from "./model";
+import * as LocationService from "./service";
 
 export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 	.get("/", async () => {
-		const { title, locations } = await locationService.homeList();
+		const { title, locations } = await LocationService.homeList();
 		return (
 			<LoadingList
 				title={title}
@@ -19,12 +19,8 @@ export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 	})
 	.get(
 		"/:locationId",
-		async ({ params, set }) => {
-			const data = await locationService.locationInfo(params.locationId);
-			if (!data) {
-				set.status = 404;
-				return <ErrorView message="Location not found" status={404} />;
-			}
+		async ({ params }) => {
+			const data = await LocationService.locationInfo(params.locationId);
 
 			return (
 				<LocationInfo
@@ -39,5 +35,14 @@ export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 				/>
 			);
 		},
-		{ params: LocationParamsSchema },
+		{ params: LocationModel.locationParams },
+	)
+	.post(
+		"/",
+		async ({ body, set }) => {
+			const id = await LocationService.createLocation(body);
+			set.status = 201;
+			return { id };
+		},
+		{ body: LocationModel.createLocationBody },
 	);
