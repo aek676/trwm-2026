@@ -13,14 +13,7 @@ export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 					title: "LOC8R",
 					strapline: "Find places to work with wifi near you!",
 				}}
-				locations={locations.map((loc) => ({
-					id: loc._id.toString(),
-					name: loc.name,
-					address: loc.address ?? "",
-					rating: loc.rating,
-					facilities: loc.facilities ?? [],
-					distance: "N/A",
-				}))}
+				locations={locations}
 			/>
 		);
 	})

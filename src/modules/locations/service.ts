@@ -2,7 +2,17 @@ import { Location } from "../../models";
 
 export const homeList = async () => {
 	const locations = await Location.find().lean();
-	return { title: "Home", locations };
+	return {
+		title: "Home",
+		locations: locations.map((loc) => ({
+			id: loc._id.toString(),
+			name: loc.name,
+			address: loc.address ?? "",
+			rating: loc.rating,
+			facilities: loc.facilities ?? [],
+			distance: "N/A",
+		})),
+	};
 };
 
 export const locationInfo = async (id: string) => {
