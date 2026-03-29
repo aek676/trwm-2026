@@ -7,6 +7,12 @@ import { connectDB } from "./config/db";
 import routes from "./routes/index";
 import { ErrorView } from "./views";
 
+const port = Bun.env.PORT ? Number(Bun.env.PORT) : 3000;
+if (Number.isNaN(port) || port < 1 || port > 65535) {
+	console.error(`Invalid PORT: ${Bun.env.PORT}`);
+	process.exit(1);
+}
+
 await connectDB();
 
 const app = new Elysia()
@@ -58,8 +64,9 @@ const app = new Elysia()
 				stack={process.env.NODE_ENV === "production" ? undefined : error.stack}
 			/>
 		);
-	})
-	.listen(3000);
+	});
+
+app.listen(port);
 
 if (process.env.NODE_ENV !== "production") {
 	console.log(
