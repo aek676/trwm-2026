@@ -1,4 +1,4 @@
-FROM oven/bun:latest AS build
+FROM oven/bun:1.3.11 AS build
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ RUN bun build \
   --outfile server \
   src/index.ts
 
-FROM gcr.io/distroless/base-debian13
+FROM gcr.io/distroless/base-debian13:nonroot AS runner
 
 WORKDIR /app
 
