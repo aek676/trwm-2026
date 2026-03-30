@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: ${IMAGE_NAME:-trwm-2026:latest}
     ports:
       - 8080:8080
     environment:
