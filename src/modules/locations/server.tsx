@@ -3,9 +3,12 @@ import { LoadingList, LocationInfo } from "../../views";
 import { LocationModel } from "./model";
 import * as LocationService from "./service";
 
-export const locations = new Elysia({ name: "locations", prefix: "/locations" })
+export const locations = new Elysia({
+	name: "locations-server",
+	prefix: "/locations",
+})
 	.get("/", async () => {
-		const { title, locations } = await LocationService.homeList();
+		const { title, locations: locs } = await LocationService.homeList();
 		return (
 			<LoadingList
 				title={title}
@@ -13,7 +16,7 @@ export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 					title: "LOC8R",
 					strapline: "Find places to work with wifi near you!",
 				}}
-				locations={locations}
+				locations={locs}
 			/>
 		);
 	})
@@ -36,25 +39,4 @@ export const locations = new Elysia({ name: "locations", prefix: "/locations" })
 			);
 		},
 		{ params: LocationModel.locationParams },
-	)
-	.post(
-		"/",
-		async ({ body, set }) => {
-			const id = await LocationService.createLocation(body);
-			set.status = 201;
-			return { id };
-		},
-		{ body: LocationModel.createLocationBody },
-	)
-	.put(
-		"/:locationId",
-		async ({ params, body, set }) => {
-			const id = await LocationService.updateLocation(params.locationId, body);
-			set.status = 200;
-			return { id };
-		},
-		{
-			params: LocationModel.locationParams,
-			body: LocationModel.updateLocationBody,
-		},
 	);

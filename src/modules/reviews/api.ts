@@ -1,31 +1,26 @@
 import { Elysia } from "elysia";
-import { LocationReviewForm } from "../../views";
 import { LocationModel } from "../locations/model";
 import { ReviewModel } from "./model";
 import * as ReviewService from "./service";
 
-export const reviews = new Elysia({ name: "reviews", prefix: "/locations" })
+export const reviewsApi = new Elysia({
+	name: "reviews-api",
+	prefix: "/api/locations",
+})
 	.get(
-		"/:locationId/review/new",
+		"/:locationId/reviews",
 		async ({ params }) => {
-			const data = await ReviewService.addReview(params.locationId);
-
-			return (
-				<LocationReviewForm
-					title={data.title}
-					locationId={data.locationId}
-					locationName={data.locationName}
-				/>
-			);
+			const location = await ReviewService.addReview(params.locationId);
+			return location;
 		},
 		{ params: LocationModel.locationParams },
 	)
 	.post(
-		"/:locationId/review/new",
+		"/:locationId/reviews",
 		async ({ params, body, set }) => {
 			await ReviewService.doAddReview(params.locationId, body);
-			set.status = 302;
-			set.headers.location = `/locations/${params.locationId}`;
+			set.status = 201;
+			return { success: true };
 		},
 		{
 			params: ReviewModel.reviewParams,
@@ -33,7 +28,7 @@ export const reviews = new Elysia({ name: "reviews", prefix: "/locations" })
 		},
 	)
 	.put(
-		"/:locationId/review/:reviewId",
+		"/:locationId/reviews/:reviewId",
 		async ({ params, body, set }) => {
 			const id = await ReviewService.updateReview(
 				params.locationId,
@@ -49,7 +44,7 @@ export const reviews = new Elysia({ name: "reviews", prefix: "/locations" })
 		},
 	)
 	.delete(
-		"/:locationId/review/:reviewId",
+		"/:locationId/reviews/:reviewId",
 		async ({ params, set }) => {
 			const id = await ReviewService.deleteReview(
 				params.locationId,

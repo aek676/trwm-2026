@@ -1,10 +1,10 @@
 import { Elysia } from "elysia";
 import { othersCtrl, usersCtrl } from "../controllers";
-import { locations } from "../modules/locations";
-import { reviews } from "../modules/reviews";
+import { locations } from "../modules/locations/server";
+import { reviews } from "../modules/reviews/server";
 import { About, HomeView } from "../views";
 
-export default new Elysia()
+export const serverRoutes = new Elysia({ name: "server-routes" })
 	.use(locations)
 	.use(reviews)
 	.get("/", ({ set }) => {

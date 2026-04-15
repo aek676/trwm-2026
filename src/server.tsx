@@ -4,7 +4,8 @@ import { staticPlugin } from "@elysiajs/static";
 import { Elysia } from "elysia";
 import { Logestic } from "logestic";
 import { connectDB } from "./config/db";
-import routes from "./routes/index";
+import { apiRoutes } from "./routes/api";
+import { serverRoutes } from "./routes/server";
 import { ErrorView } from "./views";
 
 const port = Bun.env.PORT ? Number(Bun.env.PORT) : 3000;
@@ -24,7 +25,8 @@ const app = new Elysia()
 			prefix: "/",
 		}),
 	)
-	.use(routes)
+	.use(serverRoutes)
+	.use(apiRoutes)
 	.use((app) =>
 		process.env.NODE_ENV !== "production" ? app.use(openapi()) : app,
 	)
