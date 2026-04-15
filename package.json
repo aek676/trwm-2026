@@ -12,10 +12,10 @@
 	"dependencies": {
 		"@elysiajs/html": "^1.4.0",
 		"@elysiajs/openapi": "^1.4.14",
-		"@elysiajs/static": "^1.4.7",
+		"@elysiajs/static": "^1.4.9",
 		"elysia": "latest",
 		"logestic": "^1.2.4",
-		"mongoose": "^9.3.3"
+		"mongoose": "^9.4.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.5",
