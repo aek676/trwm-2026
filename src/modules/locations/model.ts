@@ -9,7 +9,10 @@ const OpeningTimeSchema = t.Object({
 
 export const LocationModel = {
 	locationParams: t.Object({
-		locationId: t.String({ pattern: "^[a-fA-F0-9]{24}$" }),
+		locationId: t.String({
+			pattern: "^[a-fA-F0-9]{24}$",
+			error: "Invalid location ID",
+		}),
 	}),
 	createLocationBody: t.Object({
 		name: t.String(),

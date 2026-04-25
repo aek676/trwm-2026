@@ -30,28 +30,20 @@ const app = new Elysia()
 	.use((app) =>
 		process.env.NODE_ENV !== "production" ? app.use(openapi()) : app,
 	)
-	.onError(({ code, error, status }) => {
-		if (typeof code === "number") {
-			const message =
-				"response" in error ? String(error.response) : error.message;
+	.onError(({ path, code, error, status }) => {
+		if (path.startsWith("/api/")) {
+			if (code === "VALIDATION") {
+				return status(400, error.customError || error.all[0].message);
+			}
 
-			return status(
-				code,
-				<ErrorView
-					message={message}
-					status={code}
-					stack={
-						process.env.NODE_ENV === "production" ? undefined : error.stack
-					}
-				/>,
-			);
+			return status(code, error.message);
 		}
 
-		if (code === "NOT_FOUND") {
+		if (typeof code === "number") {
 			return (
 				<ErrorView
-					message="Not Found"
-					status={404}
+					message={error.response}
+					status={code}
 					stack={
 						process.env.NODE_ENV === "production" ? undefined : error.stack
 					}
